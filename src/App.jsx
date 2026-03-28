@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -8,16 +9,18 @@ import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

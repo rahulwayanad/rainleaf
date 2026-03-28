@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/common/SEO';
+import StructuredData from '../components/common/StructuredData';
 import PageHero from '../components/common/PageHero';
 import ServiceBlock from '../components/services/ServiceBlock';
 import CtaBanner from '../components/home/CtaBanner';
@@ -9,6 +11,14 @@ export default function ServicesPage() {
 
   return (
     <>
+      <SEO
+        title="Services"
+        canonicalPath="/services"
+        description="Explore services at Rainleaf Family Retreat - private house, private swimming pool, complimentary breakfast, trekking in Wayanad, and optional lunch & dinner."
+        keywords="Rainleaf services, private villa services Wayanad, breakfast included Wayanad resort, trekking Wayanad, private pool resort Kerala"
+        image="https://www.rainleafretreat.com/images/villa-3.jpeg"
+      />
+      <StructuredData page="services" />
       <PageHero title="SERVICES" breadcrumbLabel="Services" />
 
       <section className="services-page-intro section">
