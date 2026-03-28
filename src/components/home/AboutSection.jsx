@@ -11,10 +11,10 @@ export default function AboutSection() {
         <div className="about-grid">
           <div className="about-images">
             <div className="about-img about-img-1">
-              <img src="/images/about-aerial.jpeg" alt="Aerial view of Rainleaf Family Retreat" />
+              <img src="/images/about-aerial.jpeg" alt="Aerial view of Rainleaf Family Retreat" loading="lazy" />
             </div>
             <div className="about-img about-img-2">
-              <img src="/images/gallery-pool-night.jpeg" alt="Private pool at night" />
+              <img src="/images/gallery-pool-night.jpeg" alt="Private pool at night" loading="lazy" />
             </div>
             <div className="about-experience">
               <span className="exp-number">3</span>

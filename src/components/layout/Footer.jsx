@@ -69,7 +69,7 @@ export default function Footer() {
               <div className="footer-gallery">
                 {galleryThumbs.map((img) => (
                   <a href="/#gallery" key={img.alt}>
-                    <img src={img.src} alt={img.alt} />
+                    <img src={img.src} alt={img.alt} loading="lazy" />
                   </a>
                 ))}
               </div>

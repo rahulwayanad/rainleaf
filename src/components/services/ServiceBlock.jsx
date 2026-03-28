@@ -2,7 +2,7 @@ export default function ServiceBlock({ number, title, description, image, badge,
   return (
     <div className={`service-block${reverse ? ' service-block-reverse' : ''}`}>
       <div className="service-block-img">
-        <img src={image} alt={title} />
+        <img src={image} alt={title} loading="lazy" />
       </div>
       <div className="service-block-content">
         <span className="service-block-number">{number}</span>

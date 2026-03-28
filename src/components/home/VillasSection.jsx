@@ -14,7 +14,7 @@ export default function VillasSection() {
           {villas.map((villa) => (
             <div className="room-card" key={villa.id}>
               <div className="room-img">
-                <img src={villa.image} alt={villa.alt} />
+                <img src={villa.image} alt={villa.alt} loading="lazy" />
               </div>
               <div className="room-info">
                 <h3>{villa.name}</h3>
