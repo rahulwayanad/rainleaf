@@ -1,7 +1,6 @@
 import SEO from '../components/common/SEO';
 import StructuredData from '../components/common/StructuredData';
 import Hero from '../components/home/Hero';
-import BookingBar from '../components/home/BookingBar';
 import AboutSection from '../components/home/AboutSection';
 import VillasSection from '../components/home/VillasSection';
 import ServicesPreview from '../components/home/ServicesPreview';
@@ -18,7 +17,6 @@ export default function HomePage() {
       />
       <StructuredData page="home" />
       <Hero />
-      <BookingBar />
       <AboutSection />
       <VillasSection />
       <ServicesPreview />

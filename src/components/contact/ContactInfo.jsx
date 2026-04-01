@@ -9,14 +9,14 @@ export default function ContactInfo() {
           <i className="fas fa-phone"></i>
           <div>
             <h4>Phone</h4>
-            <p><a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
+            <p><a href="https://wa.me/7012605966">+91 70126 05966</a></p>
           </div>
         </div>
         <div className="contact-detail-item">
           <i className="fas fa-envelope"></i>
           <div>
             <h4>Email</h4>
-            <p><a href="mailto:info@rainleafretreat.com">info@rainleafretreat.com</a></p>
+            <p><a href="mailto:info@rainleafresort.com">info@rainleafresort.com</a></p>
           </div>
         </div>
         <div className="contact-detail-item">

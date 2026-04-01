@@ -42,6 +42,16 @@ const services = [
   {
     id: 5,
     number: '05',
+    icon: 'fas fa-campfire',
+    title: 'Camp Fire',
+    shortDesc: 'End your evenings around a cozy campfire under the open sky. A perfect way to unwind and bond with family.',
+    fullDesc: 'Gather around a warm campfire under the starlit Wayanad sky and let the evening come alive. Whether you\'re sharing stories, roasting snacks, or simply soaking in the peaceful sounds of nature, our campfire experience creates unforgettable memories. Included complimentary with your stay.',
+    image: '/images/campfire.jpg',
+    badge: 'included',
+  },
+  {
+    id: 6,
+    number: '06',
     icon: 'fas fa-utensils',
     title: 'Lunch & Dinner',
     shortDesc: 'Enjoy authentic Kerala cuisine prepared fresh for you. Home-cooked meals with local flavors available on request.',
@@ -50,8 +60,8 @@ const services = [
     badge: 'payable',
   },
   {
-    id: 6,
-    number: '06',
+    id: 7,
+    number: '07',
     icon: 'fas fa-wifi',
     title: 'Free WiFi',
     shortDesc: 'Stay connected with complimentary high-speed WiFi available throughout the retreat and all villas.',

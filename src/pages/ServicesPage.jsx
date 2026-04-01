@@ -14,9 +14,9 @@ export default function ServicesPage() {
       <SEO
         title="Services"
         canonicalPath="/services"
-        description="Explore services at Rainleaf Family Retreat - private house, private swimming pool, complimentary breakfast, trekking in Wayanad, and optional lunch & dinner."
-        keywords="Rainleaf services, private villa services Wayanad, breakfast included Wayanad resort, trekking Wayanad, private pool resort Kerala"
-        image="https://www.rainleafretreat.com/images/villa-3.jpeg"
+        description="Explore services at Rainleaf Family Retreat - private house, private swimming pool, complimentary breakfast, campfire, trekking in Wayanad, and optional lunch & dinner."
+        keywords="Rainleaf services, private villa services Wayanad, breakfast included Wayanad resort, trekking Wayanad, private pool resort Kerala, campfire Wayanad resort, campfire villa Kerala"
+        image="https://www.rainleafresort.com/images/villa-3.jpeg"
       />
       <StructuredData page="services" />
       <PageHero title="SERVICES" breadcrumbLabel="Services" />

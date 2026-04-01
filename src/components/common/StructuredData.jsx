@@ -6,11 +6,11 @@ const localBusiness = {
   name: 'Rainleaf Family Retreat',
   description:
     '3 exclusive private villas with swimming pools nestled in the serene hills of Wayanad, Kerala. Perfect family retreat with complimentary breakfast and trekking.',
-  url: 'https://www.rainleafretreat.com',
-  telephone: '+91XXXXXXXXXX',
-  email: 'info@rainleafretreat.com',
-  image: 'https://www.rainleafretreat.com/images/hero-banner.jpeg',
-  logo: 'https://www.rainleafretreat.com/images/hero-banner.jpeg',
+  url: 'https://www.rainleafresort.com',
+  telephone: '+917012605966',
+  email: 'info@rainleafresort.com',
+  image: 'https://www.rainleafresort.com/images/hero-banner.jpeg',
+  logo: 'https://www.rainleafresort.com/images/hero-banner.jpeg',
   priceRange: '₹₹₹',
   address: {
     '@type': 'PostalAddress',
@@ -39,6 +39,7 @@ const localBusiness = {
     { '@type': 'LocationFeatureSpecification', name: 'Free Breakfast', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Trekking', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Camp Fire', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Private House', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Family Friendly', value: true },
   ],
@@ -61,7 +62,7 @@ const breadcrumbHome = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.rainleafretreat.com/' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.rainleafresort.com/' },
   ],
 };
 
@@ -72,14 +73,14 @@ export default function StructuredData({ page = 'home' }) {
       ...breadcrumbHome,
       itemListElement: [
         ...breadcrumbHome.itemListElement,
-        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.rainleafretreat.com/services' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.rainleafresort.com/services' },
       ],
     },
     contact: {
       ...breadcrumbHome,
       itemListElement: [
         ...breadcrumbHome.itemListElement,
-        { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://www.rainleafretreat.com/contact' },
+        { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://www.rainleafresort.com/contact' },
       ],
     },
   };

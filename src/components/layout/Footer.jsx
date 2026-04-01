@@ -43,8 +43,8 @@ export default function Footer() {
             <div className="footer-col">
               <h3>Contact Info</h3>
               <ul className="contact-list">
-                <li><i className="fas fa-phone"></i> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></li>
-                <li><i className="fas fa-envelope"></i> info@rainleafretreat.com</li>
+                <li><i className="fas fa-phone"></i> <a href="tel:+917012605966">+91 7012605966</a></li>
+                <li><i className="fas fa-envelope"></i> <a href="mailto:info@rainleafresort.com">info@rainleafresort.com</a></li>
                 <li><i className="fas fa-map-marker-alt"></i> Rainleaf Family Retreat, Near GHSS, Kaniyambetta, Wayanad, Kerala 673121</li>
               </ul>
               <div className="footer-social">

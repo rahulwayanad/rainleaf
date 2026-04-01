@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://www.rainleafretreat.com'; // Replace with actual domain
+const SITE_URL = 'https://www.rainleafresort.com'; // Replace with actual domain
 const DEFAULT_IMAGE = `${SITE_URL}/images/hero-banner.jpeg`;
 
 export default function SEO({

@@ -13,7 +13,7 @@ export default function ContactPage() {
         canonicalPath="/contact"
         description="Contact Rainleaf Family Retreat in Wayanad, Kerala. Book your private villa with pool today. Call us or send a message for availability and pricing."
         keywords="contact Rainleaf Wayanad, book villa Wayanad, Rainleaf Family Retreat phone, resort booking Kaniyambetta, family villa booking Kerala"
-        image="https://www.rainleafretreat.com/images/gallery-pool-night.jpeg"
+        image="https://www.rainleafresort.com/images/gallery-pool-night.jpeg"
       />
       <StructuredData page="contact" />
       <PageHero title="CONTACT" breadcrumbLabel="Contact" />
