@@ -42,6 +42,16 @@ export default function Header() {
 
   return (
     <header className={`header${isInnerPage ? ' header-inner-page' : ''}${scrolled ? ' scrolled' : ''}`}>
+      <div className="top-bar">
+        <div className="container top-bar-inner">
+          <a href="tel:+917012605966" className="top-bar-phone">
+            <i className="fas fa-phone"></i> +91 70126 05966
+          </a>
+          <a href="https://wa.me/917012605966" className="top-bar-whatsapp" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </div>
       <div className="container header-inner">
         <Link to="/" className="logo">
           <span className="logo-icon">&#127807;</span>

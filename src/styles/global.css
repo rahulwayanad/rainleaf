@@ -146,6 +146,45 @@ ul {
   font-size: 16px;
 }
 
+/* ========== Top Bar ========== */
+.top-bar {
+  background: var(--darker);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 0;
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.top-bar-phone,
+.top-bar-whatsapp {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.top-bar-phone:hover {
+  color: var(--gold);
+}
+
+.top-bar-whatsapp:hover {
+  color: #25d366;
+}
+
+.top-bar-whatsapp i {
+  font-size: 15px;
+  color: #25d366;
+}
+
 /* ========== Header ========== */
 .header {
   position: fixed;
