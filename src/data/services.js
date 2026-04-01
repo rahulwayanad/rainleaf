@@ -42,7 +42,7 @@ const services = [
   {
     id: 5,
     number: '05',
-    icon: 'fas fa-campfire',
+    icon: 'fas fa-fire',
     title: 'Camp Fire',
     shortDesc: 'End your evenings around a cozy campfire under the open sky. A perfect way to unwind and bond with family.',
     fullDesc: 'Gather around a warm campfire under the starlit Wayanad sky and let the evening come alive. Whether you\'re sharing stories, roasting snacks, or simply soaking in the peaceful sounds of nature, our campfire experience creates unforgettable memories. Included complimentary with your stay.',
@@ -62,6 +62,16 @@ const services = [
   {
     id: 7,
     number: '07',
+    icon: 'fas fa-child',
+    title: "Children's Play Area",
+    shortDesc: 'A dedicated outdoor play area for kids to enjoy fun activities in a safe, natural environment.',
+    fullDesc: "Keep the little ones entertained at our dedicated children's play area, set amidst the natural surroundings of Wayanad. Kids can enjoy outdoor games and activities in a safe, open environment while parents relax nearby. An additional charge applies.",
+    image: '/images/play-area.jpg',
+    badge: 'payable',
+  },
+  {
+    id: 8,
+    number: '08',
     icon: 'fas fa-wifi',
     title: 'Free WiFi',
     shortDesc: 'Stay connected with complimentary high-speed WiFi available throughout the retreat and all villas.',
