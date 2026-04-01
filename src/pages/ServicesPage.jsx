@@ -28,7 +28,7 @@ export default function ServicesPage() {
               <h2 className="services-intro-title">ENJOY COMPLETE & BEST<br />QUALITY FACILITIES</h2>
             </div>
             <div className="services-intro-line">
-              <Link to="/contact" className="btn-outline-dark">Book Your Stay</Link>
+              <Link to="/availability" className="btn-outline-dark">Book Your Stay</Link>
             </div>
           </div>
         </div>

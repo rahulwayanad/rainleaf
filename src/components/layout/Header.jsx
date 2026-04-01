@@ -74,7 +74,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <Link to="/contact" className="btn btn-book-header">Book Now</Link>
+        <Link to="/availability" className="btn btn-book-header">Book Now</Link>
         <button
           className={`menu-toggle${menuOpen ? ' active' : ''}`}
           aria-label="Toggle menu"

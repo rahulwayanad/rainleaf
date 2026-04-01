@@ -40,7 +40,7 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-            <Link to="/contact" className="btn btn-primary">Book Your Stay</Link>
+            <Link to="/availability" className="btn btn-primary">Book Your Stay</Link>
           </div>
         </div>
       </div>

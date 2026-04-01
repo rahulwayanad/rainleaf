@@ -10,7 +10,7 @@ export default function Hero() {
         <p className="hero-desc">3 exclusive private villas with swimming pool, nestled in the serene hills of Wayanad, Kerala. The perfect family retreat.</p>
         <div className="hero-buttons">
           <a href="/#villas" className="btn btn-primary">Explore Villas</a>
-          <Link to="/contact" className="btn btn-outline">Book Now</Link>
+          <Link to="/availability" className="btn btn-outline">Book Now</Link>
         </div>
       </div>
       <div className="hero-scroll">

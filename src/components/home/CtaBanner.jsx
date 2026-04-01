@@ -27,7 +27,7 @@ export default function CtaBanner({ title, description, showStats = true, ctaTex
             </div>
           </div>
         )}
-        <Link to="/contact" className="btn btn-primary">{ctaText}</Link>
+        <Link to="/availability" className="btn btn-primary">{ctaText}</Link>
       </div>
     </section>
   );

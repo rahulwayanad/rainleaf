@@ -1,7 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import villas from '../../data/villas';
 
+const today    = new Date().toISOString().split('T')[0];
+const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+
 export default function VillasSection() {
+  const navigate = useNavigate();
+
+  function checkVilla(villaId) {
+    const params = new URLSearchParams({ check_in: today, check_out: tomorrow, guests: '2' });
+    navigate(`/availability?${params.toString()}`);
+  }
+
   return (
     <section id="villas" className="rooms section section-dark">
       <div className="container">
@@ -25,7 +35,9 @@ export default function VillasSection() {
                   <span><i className="fas fa-home"></i> Full House</span>
                   <span><i className="fas fa-coffee"></i> Breakfast</span>
                 </div>
-                <Link to="/contact" className="btn btn-outline-light">Book Now</Link>
+                <button className="btn btn-outline-light" onClick={() => checkVilla(villa.id)}>
+                  Check Availability
+                </button>
               </div>
             </div>
           ))}
