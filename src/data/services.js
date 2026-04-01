@@ -66,8 +66,8 @@ const services = [
     title: "Children's Play Area",
     shortDesc: 'A dedicated outdoor play area for kids to enjoy fun activities in a safe, natural environment.',
     fullDesc: "Keep the little ones entertained at our dedicated children's play area, set amidst the natural surroundings of Wayanad. Kids can enjoy outdoor games and activities in a safe, open environment while parents relax nearby. An additional charge applies.",
-    image: '/images/play-area.jpg',
-    badge: 'payable',
+    image: '/images/play-area.jpeg',
+    badge: 'included',
   },
   {
     id: 8,
