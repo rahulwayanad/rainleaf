@@ -77,11 +77,13 @@ export default function AdminCalendarTab({ token }) {
 
   function handleDayClick(villa, day) {
     const dateStr = toDateStr(year, month, day);
+    const today   = toDateStr(...(d => [d.getFullYear(), d.getMonth()+1, d.getDate()])(new Date()));
     const booked  = (bookedDays[dateStr] || []).includes(villa.id);
     if (booked) {
       const booking = getBookingForDay(villa.id, dateStr);
       setDetailModal(booking || { _noRecord: true, date: dateStr, villa });
     } else {
+      if (dateStr < today) return;
       setBookModal({ villa, date: dateStr, checkOut: addDays(dateStr, 1) });
       setBookForm({ customer_name: '', email: '', phone: '', guests: 2 });
       setBookStatus(null);
@@ -169,18 +171,20 @@ export default function AdminCalendarTab({ token }) {
                   const booked  = (bookedDays[dateStr] || []).includes(villa.id);
                   const status  = booked ? getDayStatus(villa.id, dateStr) : null;
                   const isToday = dateStr === todayStr;
+                  const isPast  = dateStr < todayStr;
                   return (
                     <div
                       key={day}
                       className={[
                         'admin-mini-cell',
-                        !booked                     ? 'admin-mini-cell--free'      : '',
-                        status === 'pending'        ? 'admin-mini-cell--pending'   : '',
-                        status === 'confirmed'      ? 'admin-mini-cell--confirmed' : '',
-                        isToday                     ? 'admin-mini-cell--today'     : '',
+                        isPast && !booked              ? 'admin-mini-cell--past'      : '',
+                        !booked && !isPast             ? 'admin-mini-cell--free'      : '',
+                        status === 'pending'           ? 'admin-mini-cell--pending'   : '',
+                        status === 'confirmed'         ? 'admin-mini-cell--confirmed' : '',
+                        isToday                        ? 'admin-mini-cell--today'     : '',
                       ].filter(Boolean).join(' ')}
                       onClick={() => handleDayClick(villa, day)}
-                      title={booked ? `${status} — click for details` : 'Free — click to book'}
+                      title={isPast && !booked ? 'Past date' : booked ? `${status} — click for details` : 'Free — click to book'}
                     >
                       {day}
                     </div>

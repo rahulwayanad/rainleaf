@@ -4,6 +4,8 @@ import { useAuth } from '../../context/AuthContext';
 import VillasTab from '../../components/admin/VillasTab';
 import AdminCalendarTab from '../../components/admin/AdminCalendarTab';
 import ExpensesTab from '../../components/admin/ExpensesTab';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -126,6 +128,53 @@ export default function AdminDashboardPage() {
     navigate('/admin');
   }
 
+  function exportBookingsPDF() {
+    const doc = new jsPDF({ orientation: 'landscape' });
+
+    doc.setFontSize(16);
+    doc.text('Rainleaf Family Retreat — Bookings', 14, 14);
+
+    const filters = [];
+    if (filterStatus !== 'all') filters.push(`Status: ${filterStatus}`);
+    if (filterVilla  !== 'all') filters.push(`Villa: ${villasMap[filterVilla] || filterVilla}`);
+    if (filterDateFrom) filters.push(`From: ${filterDateFrom}`);
+    if (filterDateTo)   filters.push(`To: ${filterDateTo}`);
+    if (filterSearch)   filters.push(`Search: ${filterSearch}`);
+    if (filters.length) {
+      doc.setFontSize(9);
+      doc.setTextColor(100);
+      doc.text(`Filters: ${filters.join('  |  ')}`, 14, 22);
+    }
+
+    doc.setFontSize(9);
+    doc.setTextColor(150);
+    doc.text(`Exported: ${new Date().toLocaleString('en-IN')}  |  ${filteredBookings.length} records`, 14, filters.length ? 28 : 22);
+
+    autoTable(doc, {
+      startY: filters.length ? 32 : 28,
+      head: [['#', 'Customer', 'Phone', 'Villa', 'Check In', 'Check Out', 'Guests', 'Status', 'Payment', 'Paid (₹)', 'Booked On']],
+      body: filteredBookings.map((b, i) => [
+        i + 1,
+        b.customer_name,
+        b.phone,
+        b.villa_id ? (villasMap[b.villa_id] || `Villa ${b.villa_id}`) : 'Any',
+        b.check_in,
+        b.check_out,
+        b.guests,
+        b.status,
+        PAYMENT_LABELS[b.payment_status],
+        Number(b.amount_paid).toLocaleString('en-IN'),
+        new Date(b.created_at).toLocaleDateString('en-IN'),
+      ]),
+      styles: { fontSize: 8, cellPadding: 3 },
+      headStyles: { fillColor: [44, 90, 44], textColor: 255, fontStyle: 'bold' },
+      alternateRowStyles: { fillColor: [245, 250, 245] },
+    });
+
+    const dateStr = new Date().toISOString().split('T')[0];
+    doc.save(`rainleaf-bookings-${dateStr}.pdf`);
+  }
+
   const unreadCount  = contacts.filter((c) => !c.is_read).length;
   const pendingCount = bookings.filter((b) => b.status === 'pending').length;
 
@@ -210,6 +259,11 @@ export default function AdminDashboardPage() {
           <h1 className="admin-page-title">
             {tab === 'contacts' ? 'Contact Messages' : 'Bookings'}
           </h1>
+          {tab === 'bookings' && filteredBookings.length > 0 && (
+            <button className="btn btn-outline-admin" onClick={exportBookingsPDF}>
+              ⬇ PDF
+            </button>
+          )}
           <button className="btn btn-outline-admin" onClick={tab === 'contacts' ? fetchContacts : fetchBookings}>
             ↻ Refresh
           </button>

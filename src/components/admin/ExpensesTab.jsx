@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -103,6 +105,48 @@ export default function ExpensesTab() {
     if (res.ok) { setEditModal(null); fetchExpenses(); }
   }
 
+  function exportExpensesPDF() {
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text('Rainleaf Family Retreat — Expenses', 14, 14);
+
+    const filters = [];
+    if (filterType) { const t = types.find(t => t.id === parseInt(filterType)); if (t) filters.push(`Type: ${t.name}`); }
+    if (filterFrom) filters.push(`From: ${filterFrom}`);
+    if (filterTo)   filters.push(`To: ${filterTo}`);
+    if (filters.length) {
+      doc.setFontSize(9);
+      doc.setTextColor(100);
+      doc.text(`Filters: ${filters.join('  |  ')}`, 14, 22);
+    }
+
+    doc.setFontSize(9);
+    doc.setTextColor(150);
+    doc.text(`Exported: ${new Date().toLocaleString('en-IN')}  |  ${expenses.length} records  |  Total: ₹${total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`, 14, filters.length ? 28 : 22);
+
+    autoTable(doc, {
+      startY: filters.length ? 32 : 28,
+      head: [['#', 'Date', 'Type', 'Amount (₹)', 'Paid By', 'Note']],
+      body: expenses.map((e, i) => [
+        i + 1,
+        e.date,
+        e.expense_type_name || '',
+        Number(e.amount).toLocaleString('en-IN', { minimumFractionDigits: 2 }),
+        e.paid_by || '—',
+        e.note    || '—',
+      ]),
+      styles: { fontSize: 9, cellPadding: 3 },
+      headStyles: { fillColor: [44, 90, 44], textColor: 255, fontStyle: 'bold' },
+      alternateRowStyles: { fillColor: [245, 250, 245] },
+      foot: [['', '', 'Total', `₹${total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`, '', '']],
+      footStyles: { fillColor: [240, 253, 244], textColor: [22, 101, 52], fontStyle: 'bold' },
+    });
+
+    const dateStr = new Date().toISOString().split('T')[0];
+    doc.save(`rainleaf-expenses-${dateStr}.pdf`);
+  }
+
   async function addType() {
     if (!newTypeName.trim()) return;
     setTypesSaving(true);
@@ -135,6 +179,11 @@ export default function ExpensesTab() {
           <button className="btn btn-primary" onClick={() => setShowForm(true)}>
             + Add Expense
           </button>
+          {expenses.length > 0 && (
+            <button className="btn btn-outline-admin" onClick={exportExpensesPDF}>
+              ⬇ PDF
+            </button>
+          )}
           <button className="btn btn-outline-admin" onClick={fetchExpenses}>↻</button>
         </div>
       </div>
