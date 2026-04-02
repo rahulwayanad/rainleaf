@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'images/**/*'],
       manifest: {
-        name: 'Rainleaf Family Retreat',
+        name: 'Rainleaf Admin',
         short_name: 'Rainleaf',
         description: 'Rainleaf Family Retreat — Wayanad, Kerala',
         theme_color: '#1a2e1a',
@@ -17,7 +17,7 @@ export default defineConfig({
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
-        start_url: '/',
+        start_url: '/admin',
         icons: [
           {
             src: '/images/icon-192.png',
