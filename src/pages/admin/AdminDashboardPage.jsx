@@ -35,7 +35,7 @@ export default function AdminDashboardPage() {
 
   // Booking filters
   const [showFilters,    setShowFilters]    = useState(false);
-  const [filterStatus,  setFilterStatus]  = useState('all');
+  const [filterStatus,  setFilterStatus]  = useState('pending');
   const [filterVilla,   setFilterVilla]   = useState('all');
   const [filterSearch,  setFilterSearch]  = useState('');
   const [filterDateFrom, setFilterDateFrom] = useState('');
@@ -509,6 +509,14 @@ export default function AdminDashboardPage() {
           </div>
         </div>
       )}
+
+      {/* ── Mobile Footer ───────────────────────────────────────────────────── */}
+      <footer className="admin-mobile-footer">
+        <span className="admin-mobile-footer-brand">&#127807; Rainleaf Admin</span>
+        <button className="admin-mobile-logout" onClick={handleLogout}>
+          ⬅ Logout
+        </button>
+      </footer>
     </div>
   );
 }
