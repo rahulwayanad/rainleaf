@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import ConfirmModal from './ConfirmModal';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -34,6 +35,9 @@ export default function ExpensesTab() {
   // Edit modal
   const [editModal,   setEditModal]   = useState(null);
   const [editForm,    setEditForm]    = useState({});
+
+  // Confirm modal
+  const [confirm,     setConfirm]     = useState(null);
 
   const fetchTypes = useCallback(async () => {
     const res = await fetch(`${API}/api/expenses/types`, { headers });
@@ -84,25 +88,40 @@ export default function ExpensesTab() {
     }
   }
 
-  async function deleteExpense(id) {
-    if (!confirm('Delete this expense?')) return;
-    await fetch(`${API}/api/expenses/${id}`, { method: 'DELETE', headers });
-    setExpenses(prev => prev.filter(e => e.id !== id));
+  function deleteExpense(id) {
+    setConfirm({
+      message: 'Delete this expense?',
+      danger: true,
+      confirmLabel: 'Delete',
+      onConfirm: async () => {
+        await fetch(`${API}/api/expenses/${id}`, { method: 'DELETE', headers });
+        setExpenses(prev => prev.filter(e => e.id !== id));
+        setConfirm(null);
+      },
+    });
   }
 
-  async function saveEdit(e) {
+  function saveEdit(e) {
     e.preventDefault();
-    const res = await fetch(`${API}/api/expenses/${editModal.id}`, {
-      method: 'PATCH', headers,
-      body: JSON.stringify({
-        amount: parseFloat(editForm.amount),
-        expense_type_id: parseInt(editForm.expense_type_id),
-        date: editForm.date,
-        paid_by: editForm.paid_by || null,
-        note: editForm.note || null,
-      }),
+    setConfirm({
+      message: 'Save changes to this expense?',
+      danger: false,
+      confirmLabel: 'Save',
+      onConfirm: async () => {
+        const res = await fetch(`${API}/api/expenses/${editModal.id}`, {
+          method: 'PATCH', headers,
+          body: JSON.stringify({
+            amount: parseFloat(editForm.amount),
+            expense_type_id: parseInt(editForm.expense_type_id),
+            date: editForm.date,
+            paid_by: editForm.paid_by || null,
+            note: editForm.note || null,
+          }),
+        });
+        if (res.ok) { setEditModal(null); fetchExpenses(); }
+        setConfirm(null);
+      },
     });
-    if (res.ok) { setEditModal(null); fetchExpenses(); }
   }
 
   function exportExpensesPDF() {
@@ -161,10 +180,17 @@ export default function ExpensesTab() {
     }
   }
 
-  async function deleteType(id) {
-    if (!confirm('Delete this expense type?')) return;
-    await fetch(`${API}/api/expenses/types/${id}`, { method: 'DELETE', headers });
-    fetchTypes();
+  function deleteType(id) {
+    setConfirm({
+      message: 'Delete this expense type?',
+      danger: true,
+      confirmLabel: 'Delete',
+      onConfirm: async () => {
+        await fetch(`${API}/api/expenses/types/${id}`, { method: 'DELETE', headers });
+        fetchTypes();
+        setConfirm(null);
+      },
+    });
   }
 
   return (
@@ -360,6 +386,17 @@ export default function ExpensesTab() {
             </form>
           </div>
         </div>
+      )}
+
+      {/* ── Confirm Modal ────────────────────────────────────────────────── */}
+      {confirm && (
+        <ConfirmModal
+          message={confirm.message}
+          confirmLabel={confirm.confirmLabel}
+          danger={confirm.danger}
+          onConfirm={confirm.onConfirm}
+          onCancel={() => setConfirm(null)}
+        />
       )}
 
       {/* ── Manage Types Modal ────────────────────────────────────────────── */}

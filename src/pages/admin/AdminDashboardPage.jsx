@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import VillasTab from '../../components/admin/VillasTab';
 import AdminCalendarTab from '../../components/admin/AdminCalendarTab';
 import ExpensesTab from '../../components/admin/ExpensesTab';
+import ConfirmModal from '../../components/admin/ConfirmModal';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -32,6 +33,9 @@ export default function AdminDashboardPage() {
   // Payment modal
   const [payModal, setPayModal] = useState(null);
   const [payForm,  setPayForm]  = useState({ payment_status:'not_paid', amount_paid:'0', extra_amount:'0', discount_amount:'0' });
+
+  // Confirm modal
+  const [confirm, setConfirm] = useState(null); // { message, onConfirm, danger, confirmLabel }
 
   // Booking filters
   const [showFilters,    setShowFilters]    = useState(false);
@@ -84,43 +88,75 @@ export default function AdminDashboardPage() {
     setContacts((prev) => prev.map((c) => c.id === id ? { ...c, is_read: true } : c));
   }
 
-  async function deleteContact(id) {
-    if (!confirm('Delete this message?')) return;
-    await fetch(`${API}/api/contacts/${id}`, { method: 'DELETE', headers });
-    setContacts((prev) => prev.filter((c) => c.id !== id));
-  }
-
-  async function updateBookingStatus(id, status) {
-    const res = await fetch(`${API}/api/bookings/${id}/status`, {
-      method: 'PATCH',
-      headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status }),
+  function deleteContact(id) {
+    setConfirm({
+      message: 'Delete this message?',
+      danger: true,
+      confirmLabel: 'Delete',
+      onConfirm: async () => {
+        await fetch(`${API}/api/contacts/${id}`, { method: 'DELETE', headers });
+        setContacts(prev => prev.filter(c => c.id !== id));
+        setConfirm(null);
+      },
     });
-    const updated = await res.json();
-    setBookings((prev) => prev.map((b) => b.id === id ? updated : b));
   }
 
-  async function updatePayment(e) {
+  function updateBookingStatus(id, status) {
+    const label = status === 'confirmed' ? 'Confirm' : 'Cancel';
+    const msg   = status === 'confirmed' ? 'Confirm this booking?' : 'Cancel this booking?';
+    setConfirm({
+      message: msg,
+      danger: status === 'cancelled',
+      confirmLabel: label,
+      onConfirm: async () => {
+        const res = await fetch(`${API}/api/bookings/${id}/status`, {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status }),
+        });
+        const updated = await res.json();
+        setBookings(prev => prev.map(b => b.id === id ? updated : b));
+        setConfirm(null);
+      },
+    });
+  }
+
+  function updatePayment(e) {
     e.preventDefault();
-    const res = await fetch(`${API}/api/bookings/${payModal.id}/payment`, {
-      method: 'PATCH',
-      headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        payment_status:  payForm.payment_status,
-        amount_paid:     parseFloat(payForm.amount_paid)     || 0,
-        extra_amount:    parseFloat(payForm.extra_amount)    || 0,
-        discount_amount: parseFloat(payForm.discount_amount) || 0,
-      }),
+    setConfirm({
+      message: 'Save payment details?',
+      danger: false,
+      confirmLabel: 'Save',
+      onConfirm: async () => {
+        const res = await fetch(`${API}/api/bookings/${payModal.id}/payment`, {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            payment_status:  payForm.payment_status,
+            amount_paid:     parseFloat(payForm.amount_paid)     || 0,
+            extra_amount:    parseFloat(payForm.extra_amount)    || 0,
+            discount_amount: parseFloat(payForm.discount_amount) || 0,
+          }),
+        });
+        const updated = await res.json();
+        setBookings(prev => prev.map(b => b.id === payModal.id ? updated : b));
+        setPayModal(null);
+        setConfirm(null);
+      },
     });
-    const updated = await res.json();
-    setBookings(prev => prev.map(b => b.id === payModal.id ? updated : b));
-    setPayModal(null);
   }
 
-  async function deleteBooking(id) {
-    if (!confirm('Delete this booking?')) return;
-    await fetch(`${API}/api/bookings/${id}`, { method: 'DELETE', headers });
-    setBookings((prev) => prev.filter((b) => b.id !== id));
+  function deleteBooking(id) {
+    setConfirm({
+      message: 'Delete this booking? This cannot be undone.',
+      danger: true,
+      confirmLabel: 'Delete',
+      onConfirm: async () => {
+        await fetch(`${API}/api/bookings/${id}`, { method: 'DELETE', headers });
+        setBookings(prev => prev.filter(b => b.id !== id));
+        setConfirm(null);
+      },
+    });
   }
 
   function handleLogout() {
@@ -508,6 +544,17 @@ export default function AdminDashboardPage() {
             </form>
           </div>
         </div>
+      )}
+
+      {/* ── Confirm Modal ───────────────────────────────────────────────────── */}
+      {confirm && (
+        <ConfirmModal
+          message={confirm.message}
+          confirmLabel={confirm.confirmLabel}
+          danger={confirm.danger}
+          onConfirm={confirm.onConfirm}
+          onCancel={() => setConfirm(null)}
+        />
       )}
 
       {/* ── Mobile Footer ───────────────────────────────────────────────────── */}
