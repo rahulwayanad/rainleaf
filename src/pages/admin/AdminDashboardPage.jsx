@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import VillasTab from '../../components/admin/VillasTab';
 import AdminCalendarTab from '../../components/admin/AdminCalendarTab';
+import ExpensesTab from '../../components/admin/ExpensesTab';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -185,6 +186,13 @@ export default function AdminDashboardPage() {
             <span className="admin-nav-icon">🏡</span>
             Villas
           </button>
+          <button
+            className={`admin-nav-item${tab === 'expenses' ? ' active' : ''}`}
+            onClick={() => setTab('expenses')}
+          >
+            <span className="admin-nav-icon">💸</span>
+            Expenses
+          </button>
         </nav>
         <button className="admin-logout-btn" onClick={handleLogout}>
           ⬅ Logout
@@ -195,8 +203,9 @@ export default function AdminDashboardPage() {
       <main className="admin-main">
         {tab === 'villas'    && <VillasTab />}
         {tab === 'calendar'  && <AdminCalendarTab token={token} />}
+        {tab === 'expenses'  && <ExpensesTab />}
 
-        {tab !== 'villas' && tab !== 'calendar' && <>
+        {tab !== 'villas' && tab !== 'calendar' && tab !== 'expenses' && <>
         <div className="admin-topbar">
           <h1 className="admin-page-title">
             {tab === 'contacts' ? 'Contact Messages' : 'Bookings'}

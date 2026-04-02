@@ -330,9 +330,9 @@ export default function AdminCalendarTab({ token }) {
                     </div>
                     <div className="form-group">
                       <label style={{ fontSize:12, color:'#666' }}>Guests</label>
-                      <select value={bookForm.guests} onChange={e => setBookForm({ ...bookForm, guests: e.target.value })}>
+                      <select className="expense-type-select" value={bookForm.guests} onChange={e => setBookForm({ ...bookForm, guests: e.target.value })}>
                         {[1,2,3,4,5,6,7,8,9,10,11,12].map(n => (
-                          <option key={n} value={n}>{n}</option>
+                          <option key={n} value={n}>{n} {n === 1 ? 'Guest' : 'Guests'}</option>
                         ))}
                       </select>
                     </div>

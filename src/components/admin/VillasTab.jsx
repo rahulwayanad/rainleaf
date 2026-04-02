@@ -126,7 +126,7 @@ export default function VillasTab() {
     <div>
       <div className="admin-topbar">
         <h1 className="admin-page-title">Villas</h1>
-        <button className="btn btn-primary" style={{ padding: '10px 20px', fontSize: 13 }} onClick={openAdd}>
+        <button className="btn btn-primary" onClick={openAdd}>
           + Add Villa
         </button>
       </div>
