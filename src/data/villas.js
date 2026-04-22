@@ -1,24 +1,24 @@
 const villas = [
   {
     id: 1,
-    name: 'Villa 1',
-    description: 'A spacious private house surrounded by greenery with your own swimming pool and garden views.',
+    name: 'Fern Villa',
+    description: 'A spacious private Kerala-style house in Wayanad with your own swimming pool, lush garden views and room for the whole family.',
     image: '/images/villa-1.jpeg',
-    alt: 'Villa 1 - White Kerala Style House',
+    alt: 'Fern Villa — white Kerala-style private pool house at Rainleaf Family Retreat, Wayanad',
   },
   {
     id: 2,
-    name: 'Villa 2',
-    description: 'Enjoy complete privacy in this beautifully designed villa with a private pool and mountain backdrop.',
+    name: 'Baugain Villa',
+    description: 'Enjoy complete privacy in this beautifully designed Wayanad villa with a private pool and Western Ghats mountain backdrop.',
     image: '/images/villa-2.jpeg',
-    alt: 'Villa 2 - Traditional Kerala Red Roof Villa',
+    alt: 'Baugain Villa — traditional red-roof Kerala villa with private pool, Wayanad',
   },
   {
     id: 3,
-    name: 'Villa 3',
-    description: 'Our premium villa offering the best views of Wayanad hills with a private pool and outdoor seating.',
+    name: 'Mist Villa',
+    description: 'Our premium Wayanad villa offering the best views of Kerala hills, a private swimming pool and outdoor seating for memorable evenings.',
     image: '/images/villa-3.jpeg',
-    alt: 'Villa 3 - Villa with Private Pool',
+    alt: 'Mist Villa — premium private pool villa with Wayanad hill view at Rainleaf Family Retreat',
   },
 ];
 

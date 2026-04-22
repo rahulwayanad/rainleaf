@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useAuth } from '../../context/AuthContext';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -37,6 +38,10 @@ export default function AdminLoginPage() {
 
   return (
     <div className="admin-login-page">
+      <Helmet>
+        <title>Admin Login | Rainleaf Family Retreat</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="admin-login-box">
         <div className="admin-login-logo">
           <span className="logo-icon">&#127807;</span>

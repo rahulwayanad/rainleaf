@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://www.rainleafresort.com/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://www.rainleafresort.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rainleafresort.com/"/>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/hero-banner.jpeg</image:loc>
+      <image:title>Rainleaf Family Retreat — Private Pool Villa Resort in Wayanad, Kerala</image:title>
+      <image:caption>Luxury private pool villa resort in Wayanad, Kerala</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/about-aerial.jpeg</image:loc>
+      <image:title>Aerial view of Rainleaf Family Retreat, Wayanad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/gallery-pool-night.jpeg</image:loc>
+      <image:title>Private swimming pool at night — Rainleaf Wayanad</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.rainleafresort.com/services</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://www.rainleafresort.com/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rainleafresort.com/services"/>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/villa-1.jpeg</image:loc>
+      <image:title>Fern Villa — private pool house at Rainleaf Family Retreat, Wayanad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/villa-2.jpeg</image:loc>
+      <image:title>Baugain Villa — Kerala-style private pool villa, Wayanad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/villa-3.jpeg</image:loc>
+      <image:title>Mist Villa — premium hill-view private pool villa, Wayanad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/campfire.jpg</image:loc>
+      <image:title>Bonfire nights in Wayanad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rainleafresort.com/images/gallery-trekking.jpg</image:loc>
+      <image:title>Guided Wayanad trekking</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.rainleafresort.com/availability</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://www.rainleafresort.com/availability"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rainleafresort.com/availability"/>
+  </url>
+
+  <url>
+    <loc>https://www.rainleafresort.com/contact</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://www.rainleafresort.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rainleafresort.com/contact"/>
+  </url>
+
+</urlset>

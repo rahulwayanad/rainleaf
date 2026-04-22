@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const galleryThumbs = [
-    { src: '/images/gallery-pool-night.jpeg', alt: 'Pool night' },
-    { src: '/images/gallery-villa-pool.jpeg', alt: 'Villa pool' },
-    { src: '/images/gallery-bedroom.jpeg', alt: 'Bedroom' },
-    { src: '/images/gallery-kitchen.jpeg', alt: 'Kitchen' },
-    { src: '/images/gallery-living.jpeg', alt: 'Living room' },
-    { src: '/images/gallery-aerial-night.jpeg', alt: 'Aerial night' },
+    { src: '/images/gallery-pool-night.jpeg', alt: 'Private pool at night — Rainleaf Wayanad resort' },
+    { src: '/images/gallery-villa-pool.jpeg', alt: 'Private pool villa in Wayanad, Kerala' },
+    { src: '/images/gallery-bedroom.jpeg', alt: 'Luxury villa bedroom at Rainleaf Family Retreat, Wayanad' },
+    { src: '/images/gallery-kitchen.jpeg', alt: 'Fully equipped kitchen in Wayanad private villa' },
+    { src: '/images/gallery-living.jpeg', alt: 'Spacious living room in Wayanad villa resort' },
+    { src: '/images/gallery-aerial-night.jpeg', alt: 'Aerial night view of Rainleaf Wayanad resort' },
   ];
 
   return (
@@ -43,15 +43,15 @@ export default function Footer() {
             <div className="footer-col">
               <h3>Contact Info</h3>
               <ul className="contact-list">
-                <li><i className="fas fa-phone"></i> <a href="tel:+917012605966">+91 7012605966</a></li>
-                <li><i className="fas fa-envelope"></i> <a href="mailto:info@rainleafresort.com">info@rainleafresort.com</a></li>
+                <li><i className="fas fa-phone"></i> <a href="tel:+917012605966" aria-label="Call Rainleaf Wayanad resort">+91 7012605966</a></li>
+                <li><i className="fas fa-envelope"></i> <a href="mailto:info@rainleafresort.com" aria-label="Email Rainleaf Wayanad resort">info@rainleafresort.com</a></li>
                 <li><i className="fas fa-map-marker-alt"></i> Rainleaf Family Retreat, Near GHSS, Kaniyambetta, Wayanad, Kerala 673121</li>
               </ul>
               <div className="footer-social">
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-whatsapp"></i></a>
-                <a href="#"><i className="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/rainleafretreat" target="_blank" rel="noopener noreferrer" aria-label="Rainleaf Retreat on Facebook"><i className="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rainleaf_family_retreat" target="_blank" rel="noopener noreferrer" aria-label="Rainleaf Retreat on Instagram"><i className="fab fa-instagram"></i></a>
+                <a href="https://wa.me/917012605966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Rainleaf Retreat"><i className="fab fa-whatsapp"></i></a>
+                <a href="https://maps.app.goo.gl/5CSZ4nXpJjuM5ck66" target="_blank" rel="noopener noreferrer" aria-label="Rainleaf Retreat on Google Maps"><i className="fas fa-map-marked-alt"></i></a>
               </div>
             </div>
             <div className="footer-col">

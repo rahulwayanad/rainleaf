@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import SEO from '../components/common/SEO';
+import StructuredData from '../components/common/StructuredData';
 import PageHero from '../components/common/PageHero';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -168,10 +169,12 @@ export default function AvailabilityPage() {
   return (
     <>
       <SEO
-        title="Check Availability — Rainleaf Family Retreat"
+        title="Check Availability & Book Wayanad Private Pool Villa"
         canonicalPath="/availability"
-        description="Check villa availability at Rainleaf Family Retreat, Wayanad."
+        description="Check live availability and book your private pool villa at Rainleaf Family Retreat — Wayanad's top-rated luxury family resort near Kaniyambetta, Kerala. Instant booking, best direct rate, complimentary breakfast."
+        keywords="book Wayanad resort, Wayanad villa availability, private pool villa booking Wayanad, Rainleaf availability, Wayanad resort reservation, last minute Wayanad villa"
       />
+      <StructuredData page="availability" />
       <PageHero title="AVAILABILITY" breadcrumbLabel="Availability" />
 
       <section className="availability-section section">

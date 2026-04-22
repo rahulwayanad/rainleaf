@@ -12,10 +12,10 @@ export default function ServicesPage() {
   return (
     <>
       <SEO
-        title="Services"
+        title="Services & Amenities at the Best Wayanad Resort"
         canonicalPath="/services"
-        description="Explore services at Rainleaf Family Retreat - private house, private swimming pool, complimentary breakfast, campfire, trekking in Wayanad, and optional lunch & dinner."
-        keywords="Rainleaf services, private villa services Wayanad, breakfast included Wayanad resort, trekking Wayanad, private pool resort Kerala, campfire Wayanad resort, campfire villa Kerala"
+        description="All-inclusive Wayanad resort services at Rainleaf Family Retreat — private villa, private swimming pool, complimentary Kerala breakfast, bonfire, guided Wayanad trekking, in-villa lunch & dinner, free WiFi and children's play area."
+        keywords="Wayanad resort amenities, private villa services Wayanad, breakfast included Wayanad resort, best Wayanad trekking resort, private pool resort Kerala, bonfire resort Wayanad, campfire villa Kerala, all inclusive Wayanad resort, resort with activities Wayanad"
         image="https://www.rainleafresort.com/images/villa-3.jpeg"
       />
       <StructuredData page="services" />

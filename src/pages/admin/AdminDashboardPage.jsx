@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useAuth } from '../../context/AuthContext';
 import VillasTab from '../../components/admin/VillasTab';
 import AdminCalendarTab from '../../components/admin/AdminCalendarTab';
@@ -234,6 +235,10 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="admin-layout">
+      <Helmet>
+        <title>Admin Dashboard | Rainleaf Family Retreat</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Sidebar */}
       <aside className="admin-sidebar">
         <div className="admin-sidebar-logo">

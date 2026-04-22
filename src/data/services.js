@@ -37,7 +37,7 @@ const services = [
     shortDesc: 'Explore the beautiful trails of Wayanad with our guided trekking experiences through lush forests and hills.',
     fullDesc: 'Explore the breathtaking trails of Wayanad with our guided trekking experiences. Hike through lush forests, discover hidden waterfalls, and enjoy panoramic views of the Western Ghats. Whether you\'re an experienced trekker or a beginner, Wayanad offers trails for every level amidst its rich biodiversity.',
     image: '/images/gallery-trekking.jpg',
-    badge: 'included',
+    badge: 'payable',
   },
   {
     id: 5,

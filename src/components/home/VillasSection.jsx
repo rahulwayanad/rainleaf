@@ -16,15 +16,15 @@ export default function VillasSection() {
     <section id="villas" className="rooms section section-dark">
       <div className="container">
         <div className="section-header section-header-light">
-          <span className="section-tag"><i className="fas fa-home"></i> Our Villas</span>
-          <h2 className="section-title">3 Private Villas<br />For Your Family</h2>
-          <p className="section-desc">Each villa is a complete private house with its own swimming pool, designed for families who value privacy and comfort in Wayanad's beautiful landscape.</p>
+          <span className="section-tag"><i className="fas fa-home" aria-hidden="true"></i> Our Villas</span>
+          <h2 className="section-title">3 Private Pool Villas in Wayanad<br />For Your Family</h2>
+          <p className="section-desc">Each villa at Rainleaf Family Retreat is a complete private house with its own swimming pool — handpicked as one of the best private villa resorts in Wayanad, Kerala for families and honeymoon couples seeking privacy and comfort.</p>
         </div>
         <div className="rooms-grid">
           {villas.map((villa) => (
             <div className="room-card" key={villa.id}>
               <div className="room-img">
-                <img src={villa.image} alt={villa.alt} loading="lazy" />
+                <img src={villa.image} alt={villa.alt} loading="lazy" width="800" height="600" />
               </div>
               <div className="room-info">
                 <h3>{villa.name}</h3>

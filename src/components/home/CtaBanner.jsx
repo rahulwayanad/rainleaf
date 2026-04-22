@@ -5,8 +5,8 @@ export default function CtaBanner({ title, description, showStats = true, ctaTex
     <section className="cta-banner">
       <div className="cta-overlay"></div>
       <div className="container cta-content">
-        <h2>{title || 'Your Private Paradise in Wayanad'}</h2>
-        <p>{description || 'Escape to the misty hills of Wayanad with your family. Private villas, private pools, and memories that last forever.'}</p>
+        <h2>{title || 'Your Private Paradise — Top-Rated Wayanad Resort'}</h2>
+        <p>{description || 'Escape to the misty hills of Wayanad, Kerala with your family. Private villas, private pools, bonfire nights, Kerala breakfast and guided trekking — book the best Wayanad resort direct for the lowest rate.'}</p>
         {showStats && (
           <div className="cta-stats">
             <div className="stat">
