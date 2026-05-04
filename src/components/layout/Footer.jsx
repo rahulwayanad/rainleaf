@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [viewCount, setViewCount] = useState(null);
   const galleryThumbs = [
     { src: '/images/gallery-pool-night.jpeg', alt: 'Private pool at night — Rainleaf Wayanad resort' },
     { src: '/images/gallery-villa-pool.jpeg', alt: 'Private pool villa in Wayanad, Kerala' },
@@ -9,6 +11,23 @@ export default function Footer() {
     { src: '/images/gallery-living.jpeg', alt: 'Spacious living room in Wayanad villa resort' },
     { src: '/images/gallery-aerial-night.jpeg', alt: 'Aerial night view of Rainleaf Wayanad resort' },
   ];
+
+  useEffect(() => {
+    async function refreshViewCount() {
+      try {
+        const response = await fetch('/api/analytics/views', { method: 'POST' });
+        if (!response.ok) {
+          return;
+        }
+        const payload = await response.json();
+        setViewCount(payload.view_count);
+      } catch (error) {
+        console.error('Unable to update view count', error);
+      }
+    }
+
+    refreshViewCount();
+  }, []);
 
   return (
     <footer className="footer">
@@ -89,7 +108,12 @@ export default function Footer() {
       {/* Footer Bottom */}
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; 2026 Rainleaf Family Retreat. All rights reserved.</p>
+          <p>
+            &copy; 2026 Rainleaf Family Retreat. All rights reserved.
+            {viewCount !== null ? (
+              <span className="footer-views"> · {viewCount.toLocaleString()} visitors</span>
+            ) : null}
+          </p>
         </div>
       </div>
     </footer>
