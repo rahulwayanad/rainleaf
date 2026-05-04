@@ -7,7 +7,7 @@ const DEFAULT_TITLE =
   'Rainleaf Family Retreat — #1 Private Pool Villa Resort in Wayanad, Kerala';
 
 const DEFAULT_DESCRIPTION =
-  'Rainleaf Family Retreat is the top-rated luxury private-pool villa resort in Wayanad, Kerala. 3 exclusive villas, complimentary Kerala breakfast, bonfire, guided trekking & 24×7 WiFi near Kaniyambetta. Book direct for the best rate.';
+  'Rainleaf Family Retreat — affordable, budget-friendly private pool villas in Wayanad, Kerala. 3 exclusive villas with private swimming pools, complimentary Kerala breakfast, bonfire, guided trekking & 24×7 WiFi near Kaniyambetta. Book direct for the best-value private pool villa rate in Wayanad.';
 
 const DEFAULT_KEYWORDS = [
   'resorts in Wayanad',
@@ -28,6 +28,20 @@ const DEFAULT_KEYWORDS = [
   'Wayanad Kerala resort booking',
   'private villa Kerala',
   'Wayanad accommodation',
+  // Budget / value-focused
+  'budget friendly private pool villa Wayanad',
+  'budget private pool villa in Wayanad',
+  'affordable private pool villa Wayanad',
+  'cheap private pool villa Wayanad',
+  'low budget private pool villa Wayanad',
+  'budget resort in Wayanad',
+  'affordable resort in Wayanad',
+  'cheap resort in Wayanad with pool',
+  'budget villa with private pool Kerala',
+  'best value private pool villa Wayanad',
+  'low cost pool villa Wayanad',
+  'affordable family villa Wayanad',
+  'budget honeymoon villa Wayanad',
 ].join(', ');
 
 export default function SEO({

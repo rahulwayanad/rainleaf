@@ -1,3 +1,5 @@
+@import 'leaflet/dist/leaflet.css';
+
 /* ========== Base & Variables ========== */
 :root {
   --gold: #5a8f4a;
@@ -3834,6 +3836,498 @@ ul {
   white-space: nowrap;
 }
 
+/* Date Selection */
+.date-selection {
+  background: #f8f6f3;
+  padding: 24px;
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+
+.date-selection h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+.date-selection .form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Properties Grid */
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.property-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.property-images {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.property-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.property-thumbnails {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.property-thumbnails img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 2px solid #fff;
+}
+
+.property-details {
+  padding: 20px;
+}
+
+.property-details h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.property-location {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.property-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.property-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.property-features span {
+  font-size: 12px;
+  background: #f0f0f0;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.property-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.property-price {
+  margin-bottom: 16px;
+}
+
+.property-price strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.property-price span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ── Property Detail Page ────────────────────────────────────────────────── */
+.property-detail-section.section {
+  padding-top: 160px; /* clear the fixed header (top-bar + main nav) */
+  padding-bottom: 60px;
+}
+
+.property-detail-section .property-header {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.property-detail-section .property-header h1 {
+  display: block;
+  font-size: 36px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 12px;
+}
+
+.property-detail-section .property-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563;
+  font-size: 15px;
+}
+
+.property-detail-section .property-meta .rating {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.property-detail-section .property-meta .rating-reviews {
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: underline;
+}
+
+.property-detail-section .property-meta .meta-dot {
+  color: #9ca3af;
+}
+
+.property-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.gallery-tile {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+  display: block;
+}
+
+.gallery-tile--hero {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, opacity 0.25s;
+}
+
+.gallery-tile:hover img {
+  transform: scale(1.04);
+  opacity: 0.95;
+}
+
+.gallery-tile:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Lightbox modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: lightboxFade 0.18s ease-out;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+@keyframes lightboxFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: pan-y;
+}
+
+.lightbox-btn {
+  position: absolute;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lightbox-btn:hover { background: rgba(255, 255, 255, 0.3); }
+.lightbox-btn:active { transform: scale(0.94); }
+
+.lightbox-close {
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.lightbox-nav:active { transform: translateY(-50%) scale(0.94); }
+
+.lightbox-prev { left: 18px; }
+.lightbox-next { right: 18px; }
+
+.lightbox-counter {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.property-detail-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.property-body .property-features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.property-body .feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f8f6f3;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.property-body .feature-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.property-body .property-description {
+  margin-bottom: 32px;
+}
+
+.property-body .property-description h3,
+.property-body .property-amenities h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 14px;
+}
+
+.property-body .property-description p {
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.property-body .amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+}
+
+.property-body .amenity-tag {
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 10px 16px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.property-info {
+  position: sticky;
+  top: 100px;
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  border: 1px solid #ececec;
+}
+
+.booking-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.booking-price-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-bottom: 4px;
+}
+
+.booking-price-header strong {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.booking-price-header span {
+  font-size: 15px;
+  color: #6b7280;
+}
+
+.booking-form {
+  display: grid;
+  gap: 14px;
+}
+
+.booking-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.booking-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.booking-form label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.booking-form input,
+.booking-form select {
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--dark);
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+}
+
+.booking-summary {
+  background: #f8f6f3;
+  padding: 16px 18px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-summary .summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: #374151;
+}
+
+.booking-summary .summary-row.summary-total {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+  margin-top: 4px;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 16px;
+}
+
+.booking-note {
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.btn-full {
+  width: 100%;
+  text-align: center;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .cal-layout { flex-direction: column; }
@@ -3846,6 +4340,73 @@ ul {
   .cal-panel--open { display: block; }
 
   .cal-cell { min-height: 56px; }
+
+  .property-detail-section.section {
+    padding-top: 110px; /* clear fixed header on mobile */
+  }
+
+  .property-detail-section .property-header h1 {
+    font-size: 26px;
+  }
+
+  .property-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 130px;
+    gap: 8px;
+  }
+
+  .gallery-tile {
+    border-radius: 10px;
+  }
+
+  .gallery-tile--hero {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .property-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .property-body .property-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .property-info {
+    position: static;
+  }
+
+  .lightbox {
+    padding: 12px;
+  }
+
+  .lightbox-image {
+    border-radius: 4px;
+  }
+
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 30px;
+  }
+
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+
+  .lightbox-counter {
+    top: 16px;
+    font-size: 13px;
+    padding: 5px 12px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -4226,4 +4787,406 @@ ul {
   background: #f0fdf4;
   color: #15803d;
   border-color: #bbf7d0;
+}
+
+/* ========== Attractions Map Section ========== */
+.attractions-map-section {
+  background: #f0f4ec;
+}
+
+.attractions-map-fullwidth {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+}
+
+.attractions-map-wrap {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(58, 107, 30, 0.12);
+  background: #fff;
+  border-top: 1px solid #d9e3cf;
+  border-bottom: 1px solid #d9e3cf;
+}
+
+.attractions-leaflet {
+  width: 100%;
+  height: 820px;
+  z-index: 1;
+}
+
+.leaflet-container {
+  font-family: var(--font-body);
+  background: #f0f4ec;
+}
+
+.rl-resort-marker,
+.rl-attraction-marker,
+.rl-empty-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.rl-attraction-marker {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.rl-resort-dot {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #3a6b1e;
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 3px rgba(58, 107, 30, 0.25),
+    0 0 14px 4px rgba(58, 107, 30, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+  animation: rl-resort-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes rl-resort-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(58, 107, 30, 0.25),
+      0 0 12px 3px rgba(58, 107, 30, 0.55),
+      0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(58, 107, 30, 0.18),
+      0 0 22px 6px rgba(58, 107, 30, 0.65),
+      0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.rl-attr-thumb {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--rl-c, #999);
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 2px var(--rl-c, #999),
+    0 3px 8px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+.rl-attr-thumb:hover {
+  transform: scale(1.15);
+  box-shadow:
+    0 0 0 2px var(--rl-c, #999),
+    0 6px 14px rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.rl-attr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rl-attr-thumb.rl-attr-fallback {
+  background: var(--rl-c, #999);
+}
+
+.rl-distance-label {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid #d9e3cf !important;
+  color: #3a6b1e !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 2px 6px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+  white-space: nowrap !important;
+}
+
+.rl-distance-label::before {
+  display: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-top: 3px solid #3a6b1e;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.rl-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 170px;
+}
+
+.rl-popup-with-image {
+  min-width: 200px;
+}
+
+.rl-popup-img-wrap {
+  position: relative;
+  margin: -12px -14px 8px;
+  height: 130px;
+  overflow: hidden;
+  background: var(--rl-c, #3a6b1e);
+}
+
+.rl-popup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rl-popup-cat {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  background: var(--rl-c, #3a6b1e);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.rl-popup strong {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: #1a1a1a;
+}
+
+.rl-popup-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #555;
+}
+
+.rl-popup-meta i {
+  color: #3a6b1e;
+  width: 12px;
+}
+
+.attractions-legend {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  background: #fff;
+  border: 1px solid #d9e3cf;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  z-index: 500;
+  font-size: 13px;
+  min-width: 168px;
+}
+
+.attractions-legend-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #3a6b1e;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5ebd9;
+  font-size: 14px;
+}
+
+.attractions-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.attractions-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  font-size: 12.5px;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .attractions-leaflet {
+    height: 620px;
+  }
+  .rl-attr-thumb {
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+  }
+  .attractions-legend {
+    right: 8px;
+    bottom: 8px;
+    padding: 8px 10px;
+    min-width: 0;
+    max-width: 150px;
+    font-size: 11px;
+  }
+  .attractions-legend-title {
+    font-size: 12px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+  }
+  .attractions-legend li {
+    font-size: 11px;
+    gap: 6px;
+  }
+  .legend-dot {
+    width: 9px;
+    height: 9px;
+  }
+  .rl-distance-label {
+    font-size: 10px !important;
+    padding: 1px 5px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .attractions-leaflet {
+    height: 540px;
+  }
+  .rl-attr-thumb {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ========== Rain Effect (Three.js) ========== */
+.rl-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9;
+}
+
+.rl-rain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rl-rain-flash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(232, 240, 255, 1) 0%,
+    rgba(220, 232, 255, 0.7) 35%,
+    rgba(200, 215, 240, 0.2) 100%
+  );
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: opacity 0.09s ease-out;
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rl-rain-flash { display: none; }
+}
+
+.rl-rain-fog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 240px;
+  background: linear-gradient(
+    to bottom,
+    rgba(220, 232, 220, 0.40) 0%,
+    rgba(220, 232, 220, 0.20) 45%,
+    rgba(220, 232, 220, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rl-rain-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: #3a6b1e;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1100;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.rl-rain-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: #3a6b1e;
+  color: #fff;
+}
+
+.rl-rain-toggle:focus-visible {
+  outline: 3px solid rgba(58, 107, 30, 0.4);
+  outline-offset: 2px;
+}
+
+body.rl-rain-on .rl-rain-toggle {
+  background: #3a6b1e;
+  color: #fff;
+}
+
+body.rl-rain-on .rl-rain-toggle:hover {
+  background: #4f8c2c;
+}
+
+@media (max-width: 480px) {
+  .rl-rain-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rl-rain-layer { animation: none; opacity: 0.25; }
 }

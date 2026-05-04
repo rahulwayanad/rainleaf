@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import villas from '../../data/villas';
+import villaDetails from '../../data/villaDetails.json';
 
 const today    = new Date().toISOString().split('T')[0];
 const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
@@ -7,7 +8,7 @@ const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
 export default function VillasSection() {
   const navigate = useNavigate();
 
-  function checkVilla(villaId) {
+  function checkVilla() {
     const params = new URLSearchParams({ check_in: today, check_out: tomorrow, guests: '2' });
     navigate(`/availability?${params.toString()}`);
   }
@@ -24,7 +25,13 @@ export default function VillasSection() {
           {villas.map((villa) => (
             <div className="room-card" key={villa.id}>
               <div className="room-img">
-                <img src={villa.image} alt={villa.alt} loading="lazy" width="800" height="600" />
+                <img
+                  src={villaDetails[villa.id]?.images?.[0] || villa.image}
+                  alt={villa.alt}
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                />
               </div>
               <div className="room-info">
                 <h3>{villa.name}</h3>
@@ -35,7 +42,7 @@ export default function VillasSection() {
                   <span><i className="fas fa-home"></i> Full House</span>
                   <span><i className="fas fa-coffee"></i> Breakfast</span>
                 </div>
-                <button className="btn btn-outline-light" onClick={() => checkVilla(villa.id)}>
+                <button className="btn btn-outline-light" onClick={() => checkVilla()}>
                   Check Availability
                 </button>
               </div>
