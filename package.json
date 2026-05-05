@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "fetch-villas": "node scripts/fetch-villa-details.mjs"
+    "fetch-villas": "node scripts/fetch-villa-details.mjs",
+    "download-villa-images": "node scripts/download-airbnb-images.mjs",
+    "refresh-villas": "npm run fetch-villas && npm run download-villa-images"
   },
   "dependencies": {
     "canvas": "^3.2.3",
